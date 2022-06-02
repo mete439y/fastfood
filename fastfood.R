@@ -13,7 +13,7 @@ Q1 <- fastfood %>%
   arrange(desc(sum))%>%
   head(1)%>%
   select(item)
-Q1
+
 
 Q2 <- fastfood%>%
   group_by(restaurant)%>%
