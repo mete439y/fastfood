@@ -1,9 +1,25 @@
+---
+title: "fastfood"
+output: html_notebook
+---
+```{r}
+install.packages("openintro")
 
+```
+
+```{r}
 suppressPackageStartupMessages(library(tidyverse))
-
 suppressPackageStartupMessages(library(openintro))
-
+```
+```{r}
 fastfood <- openintro::fastfood
+```
+
+
+```{r}
+fastfood
+```
+```{r}
 
 Q1 <- fastfood%>%
   group_by(item, restaurant)%>%
@@ -11,39 +27,44 @@ Q1 <- fastfood%>%
   filter(restaurant == "Burger King" | restaurant == "Chick Fil-A")%>%
   arrange(desc(sum))%>%
   head(1)%>%
-  select(item, head())
-
-
-
+  select(item)
+Q1
+```
+```{r}
 Q2 <- fastfood%>%
   group_by(restaurant)%>%
   summarise(mean = round(mean(sugar), 2), .groups = 'drop')%>%
   filter(restaurant == "Subway")%>%
-  select(mean)%>%
-  as.data.frame()
+  select(mean)
+Q2
 
-
+```
+```{r}
 Q3 <- fastfood%>%
   group_by(restaurant)%>%
   summarise(mean = round(mean(calories), 2))%>%
   filter(restaurant == "Taco Bell")%>%
-  select(mean)%>%
-  as.data.frame()
-
-
-
+  select(mean)
+Q3
+```
+```{r}
 Q4 <- fastfood%>%
   mutate(fatXsugar = total_fat*sugar)%>%
   select(restaurant,item, fatXsugar)%>%
   arrange(desc(fatXsugar))%>%
   head(3)
+Q4
+```
 
-
-
+```{r}
 Q5 <- fastfood%>%
   group_by(restaurant)%>%
   summarise(mean = round(mean(sat_fat),2))%>%
   filter( mean > 10)%>%
   summarise(total = n())
+       
+Q5
 
+```
 
+?ave
