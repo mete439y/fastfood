@@ -1,19 +1,19 @@
 
+
 suppressPackageStartupMessages(library(tidyverse))
 
 suppressPackageStartupMessages(library(openintro))
 
 fastfood <- openintro::fastfood
 
-Q1 <- fastfood%>%
+Q1 <- fastfood %>%
   group_by(item, restaurant)%>%
   summarise(sum = sum(calories))%>%
   filter(restaurant == "Burger King" | restaurant == "Chick Fil-A")%>%
   arrange(desc(sum))%>%
   head(1)%>%
-  select(item, head())
-
-
+  select(item)
+Q1
 
 Q2 <- fastfood%>%
   group_by(restaurant)%>%
